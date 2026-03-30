@@ -8,7 +8,7 @@ Essentially, at any given point in time the Enigmaxi machine defines a permutati
 
 ![](EnigmaxiWheel.png)
 
-To encrypt a letter $\alpha$, we start on the boundary of the wheel at $\alpha$ and follow the path through the wheel. If we return to the boundary of the wheel at the letter $\beta$, then the encryption of $\alpha$ is $\beta$. It can happen that the path never returns to the boundary. In that case we say that the encryption of $\alpha$ is $\alpha$ itself. We are given two examples for when we start with the keyword "IETS": If we start at the letter 'Z' and follow the path then we enter the second rotor at 'A' and the third one at 'D'. Following the whole path we exit the first rotor again at the letter 'J', so the encryption of 'Z' is 'J'. If instead we start at the letter 'H', then at some point in its path we enter the fourth rotor also at 'H'. The self-similarity of the wheel then implies that from there the path will keep repeating itself. So the encryption of 'H' is 'H'.
+To encrypt a letter $\alpha$, we start on the boundary of the wheel at $\alpha$ and follow the path through the wheel. If we return to the boundary of the wheel at the letter $\beta$, then the encryption of $\alpha$ is $\beta$. It can happen that the path never returns to the boundary. In that case we say that the encryption of $\alpha$ is $\alpha$ itself. We are given two examples for when we start with the keyword "IETS": If we start at the letter 'Z' and follow the path then we enter the second rotor at 'A' and the third one at 'D'. Following the whole path, we exit the first rotor again at the letter 'J', so the encryption of 'Z' is 'J'. If instead we start at the letter 'H', then at some point in its path we enter the fourth rotor also at 'H'. The self-similarity of the wheel then implies that from there the path will keep repeating itself. So the encryption of 'H' is 'H'.
 
 After encrypting a letter we turn all the rotors that we visited during the encryption of that letter one step in clockwise direction. In our example, for the letter 'Z' we got to the fifth rotor so we turn the first five rotors one step. For the letter 'H' its path goes through all rotors so we turn all the rotors one step. After this we proceed with encrypting the next letter in a message.
 
@@ -19,7 +19,7 @@ The file `enigmaxi.hs` contains an implementation of the full Enigmaxi machine i
 ```
   enigmaxi "IETS" "XAS DIMF WR TIXK WCJA MJVIR"
 ```
-In `singleRotor.hs` we implement a greatly simplified version of the Enigmaxi with only one rotor. The rotor we use here is a reflector and different from the original Enigmaxi rotor. In this version the keyword is a single alphabetic character. Again, you can play with it in GHCi:
+In `singleRotor.hs` we implement a greatly simplified version of the Enigmaxi with only one rotor. The rotor we use here is a reflector and is different from the original Enigmaxi rotor. In this version the keyword is a single alphabetic character. Again, you can play with it in GHCi:
 ```
   singRot 'X' "PSB ASWR KV KSC RLUX RRFO DRAKQ"
 ```
