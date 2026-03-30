@@ -35,8 +35,14 @@ To set up a Clash project you can follow the instructions [here](https://clash-l
 ```
 stack run -- clashi
 ```
-After loading with `:l ClashSingRot.hs` we can simulate our circuit in the interpreter with `sampleN`. For example, to encrypt the message "DATDOENWEOOKNIETVOORNIETS" with key 'X' you can run
+After loading with `:l ClashSingRot.hs` we can simulate our circuit in the interpreter with `sampleN`. For example, to decrypt the message "PSBASWRKVKSCRLUXRRFODRAKQ" with key 'X' we can run
 ```
-simulateN @System 25 (topEntity 23 clockGen resetGen enableGen) [3,0,19,3,14,4,13,22,4,14,14,10,13,8,4,19,21,14,14,17,13,8,4,19,18]
+simulateN @System 25 (topEntity 23 clockGen resetGen enableGen) [15,18,1,0,18,22,17,10,21,10,18,2,17,11,20,23,17,17,5,14,3,17,0,10,16]
 ```
+To convert the output to letters, for example just load `enigmaxi.hs` or `singleRotor.hs` in ghci and apply `map (alphabet!!)` to the output.
+
+## Lean
+The `letterImage` function appearing in `singleRotor.hs` and `ClashSingRot.hs` should be equal to its own inverse, provided we made a suitable choice for our rotor. We include a proof of this fact in Lean, to show how Lean can be used to prove statements about other code. The proof can be found in `involution.lean`. Basically, we recreate the `letterImage` function in Lean and prove that it has this property. Note that we do not formally prove that the Lean implementation of `letterImage` is equivalent to that in Haskell.
+
+
 
