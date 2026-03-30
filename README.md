@@ -25,13 +25,13 @@ singRot 'X' "PSB ASWR KV KSC RLUX RRFO DRAKQ"
 ```
 
 ## Clash
-To quote the [official website](https://clash-lang.org/): "Clash is a hardware description language (HDL) that borrows both its syntax and semantics from Haskell". Basically, Clash allows us to describe hardware cirquits using Haskell. The Clash compiler can then translate this high-level description to a low-level HDL like for instance VHDL.
+To quote the [official website](https://clash-lang.org/): "Clash is a hardware description language (HDL) that borrows both its syntax and semantics from Haskell". Basically, Clash allows us to describe hardware circuits using Haskell. The Clash compiler can then translate this high-level description to a low-level HDL like for instance VHDL.
 
-As a fun experiment, I decided to try and design a hardware cirquit that functions as an Enigmaxi machine. Unfortunately, the unbounded recursion that is inherent to the encryption algorithm of the Enigmaxi machine is not very well suited for hardware implementations (it is in fact possible to bound the recursion depth in terms of the message length, but this yields a very large and blunt bound). Therefore, instead of the full Enigmaxi I considered the single-rotor version, which leads to a much simpler algorithm.
+As a fun experiment, I decided to try and design a hardware circuit that functions as an Enigmaxi machine. Unfortunately, the unbounded recursion that is inherent to the encryption algorithm of the Enigmaxi machine is not very well suited for hardware implementations (it is in fact possible to bound the recursion depth in terms of the message length, but this yields a very large and blunt bound). Therefore, instead of the full Enigmaxi I considered the single-rotor version, which leads to a much simpler algorithm.
 
 The result can be found in `ClashSingRot.hs`. Here we describe a circuit that on input of a stream of unsigned 6-bit integers (each representing a letter in a message) outputs another stream of unsigned 6-bit integers (representing the encrypted letters). Our encryption algorithm is the same as in `singleRotor.hs` (with letter-to-integer conversion left out), but written in the shape of a [Mealy machine](https://en.wikipedia.org/wiki/Mealy_machine). It is very similar to the example of the MAC circuit given in the [Clash tutorial](https://docs.clash-lang.org/tutorial/index.html).
 
-To set up a Clash project you can follow the instructions [here](https://clash-lang.org/install/linux/). If you followed the insructions using Stack, then inside such a project you can start the Clash interpreter with 
+To set up a Clash project you can follow the instructions [here](https://clash-lang.org/install/linux/). If you followed the instructions using Stack, then inside such a project you can start the Clash interpreter with 
 ```
 stack run -- clashi
 ```
