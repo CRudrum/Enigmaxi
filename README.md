@@ -16,8 +16,8 @@ The puzzle makers give us one example to test our implementation. With keyword "
 
 ## Haskell
 The file `enigmaxi.hs` contains an implementation of the full Enigmaxi machine in Haskell. You can test it by loading it in GHCi and running
-```
-  enigmaxi "IETS" "XAS DIMF WR TIXK WCJA MJVIR"
+```ghci
+enigmaxi "IETS" "XAS DIMF WR TIXK WCJA MJVIR"
 ```
 In `singleRotor.hs` we implement a greatly simplified version of the Enigmaxi with only one rotor. The rotor we use here is a reflector and is different from the original Enigmaxi rotor. In this version the keyword is a single alphabetic character. Again, you can play with it in GHCi:
 ```
