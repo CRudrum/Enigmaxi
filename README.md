@@ -42,7 +42,7 @@ simulateN @System 25 (topEntity 23 clockGen resetGen enableGen) [15,18,1,0,18,22
 To convert the output to letters, for example just load `enigmaxi.hs` or `singleRotor.hs` in ghci and apply `map (alphabet!!)` to the output.
 
 ## Lean
-The `letterImage` function appearing in `singleRotor.hs` and `ClashSingRot.hs` should be equal to its own inverse, provided we made a suitable choice for our rotor. As a very small bonus we include a proof of this fact in Lean, to show how Lean can be used to prove statements about other code. The proof can be found in `involution.lean`. Basically, we recreate the `letterImage` function in Lean and prove that it has this property. Note that we do not formally prove that the Lean implementation of `letterImage` is equivalent to that in Haskell.
+The `letterImage` function appearing in `singleRotor.hs` and `ClashSingRot.hs` should be equal to its own inverse, provided we made a suitable choice for our rotor. As a very small bonus we include a proof of this fact in Lean, to show how Lean can be used to prove statements about code. The proof can be found in `involution.lean`. Basically, we recreate the `letterImage` function in Lean and prove that it has this property. Note that we do not formally prove that the Lean implementation of `letterImage` is equivalent to that in Haskell.
 
 
 
