@@ -26,5 +26,8 @@ singRot 'X' "PSB ASWR KV KSC RLUX RRFO DRAKQ"
 
 ## Clash
 To quote the [official website](https://clash-lang.org/): "Clash is a hardware description language (HDL) that borrows both its syntax and semantics from Haskell". Basically, Clash allows us to describe hardware cirquits using Haskell. The Clash compiler can then translate this high-level description to a low-level HDL like for instance VHDL.
-As a fun experiment I decided to try and design an FPGA such that it functions as an Enigmaxi machine. Unfortunately, the unbounded recursion that is inherent to the encryption algorithm of the Enigmaxi machine is not very well suited for hardware implementations (it is in fact possible to bound the recursion depth in terms of the message length, but this yields a very large and blunt bound). Therefore, instead of the full Enigmaxi I considered the single-rotor version. 
+
+As a fun experiment I decided to try and design a hardware cirquit that functions as an Enigmaxi machine. Unfortunately, the unbounded recursion that is inherent to the encryption algorithm of the Enigmaxi machine is not very well suited for hardware implementations (it is in fact possible to bound the recursion depth in terms of the message length, but this yields a very large and blunt bound). Therefore, instead of the full Enigmaxi I considered the single-rotor version. 
+
+The result can be found in `ClashSingRot.hs`. Here we describe a circuit that on input of a stream of unsigned 6-bit integers (each representing a letter in a message) outputs another stream of unsigned 6-bit integers (representing the encrypted letters). Our encryption algorithm is the same as in in singleRotor.hs (with letter-to-integer conversion left out), but writtent in the shape of a [Mealy machine](https://en.wikipedia.org/wiki/Mealy_machine). It is very similar to the example MAC circuit given in the [Clash tutorial](https://docs.clash-lang.org/tutorial/index.html). 
 
