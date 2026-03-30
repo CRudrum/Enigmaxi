@@ -34,7 +34,7 @@ def rotorVec : Fin 26 → Fin 26
   | ⟨25, _⟩ => ⟨16, by omega⟩
   | ⟨n+26, h⟩ => absurd h (by omega) -- we have to prove that other cases do not exist (note that n+26 and (therefore) n must be natural, so n+26 >= 26)
 
-  -- The letterImage definition here is easy because arithmetic in Fin 26 is automatically mod 26
+-- The letterImage definition here is easy because arithmetic in Fin 26 is automatically mod 26
 def letterImage (s l : Fin 26) : Fin 26 :=
   rotorVec ((l - s)) + s
 
