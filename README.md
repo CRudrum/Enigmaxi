@@ -27,7 +27,7 @@ singRot 'X' "PSB ASWR KV KSC RLUX RRFO DRAKQ"
 ## Clash
 To quote the [official website](https://clash-lang.org/): "Clash is a hardware description language (HDL) that borrows both its syntax and semantics from Haskell". Basically, Clash allows us to describe hardware cirquits using Haskell. The Clash compiler can then translate this high-level description to a low-level HDL like for instance VHDL.
 
-As a fun experiment, I decided to try and design a hardware cirquit that functions as an Enigmaxi machine. Unfortunately, the unbounded recursion that is inherent to the encryption algorithm of the Enigmaxi machine is not very well suited for hardware implementations (it is in fact possible to bound the recursion depth in terms of the message length, but this yields a very large and blunt bound). Therefore, instead of the full Enigmaxi I considered the single-rotor version. 
+As a fun experiment, I decided to try and design a hardware cirquit that functions as an Enigmaxi machine. Unfortunately, the unbounded recursion that is inherent to the encryption algorithm of the Enigmaxi machine is not very well suited for hardware implementations (it is in fact possible to bound the recursion depth in terms of the message length, but this yields a very large and blunt bound). Therefore, instead of the full Enigmaxi I considered the single-rotor version, which leads to a much simpler algorithm.
 
 The result can be found in `ClashSingRot.hs`. Here we describe a circuit that on input of a stream of unsigned 6-bit integers (each representing a letter in a message) outputs another stream of unsigned 6-bit integers (representing the encrypted letters). Our encryption algorithm is the same as in `singleRotor.hs` (with letter-to-integer conversion left out), but written in the shape of a [Mealy machine](https://en.wikipedia.org/wiki/Mealy_machine). It is very similar to the example of the MAC circuit given in the [Clash tutorial](https://docs.clash-lang.org/tutorial/index.html).
 
@@ -42,7 +42,7 @@ simulateN @System 25 (topEntity 23 clockGen resetGen enableGen) [15,18,1,0,18,22
 To convert the output to letters, for example just load `enigmaxi.hs` or `singleRotor.hs` in ghci and apply `map (alphabet!!)` to the output.
 
 ## Lean
-The `letterImage` function appearing in `singleRotor.hs` and `ClashSingRot.hs` should be equal to its own inverse, provided we made a suitable choice for our rotor. We include a proof of this fact in Lean, to show how Lean can be used to prove statements about other code. The proof can be found in `involution.lean`. Basically, we recreate the `letterImage` function in Lean and prove that it has this property. Note that we do not formally prove that the Lean implementation of `letterImage` is equivalent to that in Haskell.
+The `letterImage` function appearing in `singleRotor.hs` and `ClashSingRot.hs` should be equal to its own inverse, provided we made a suitable choice for our rotor. As a very small bonus we include a proof of this fact in Lean, to show how Lean can be used to prove statements about other code. The proof can be found in `involution.lean`. Basically, we recreate the `letterImage` function in Lean and prove that it has this property. Note that we do not formally prove that the Lean implementation of `letterImage` is equivalent to that in Haskell.
 
 
 
