@@ -14,3 +14,15 @@ After encrypting a letter we turn all the rotors that we visited during the encr
 
 The puzzle makers give us one example to test our implementation. With keyword "IETS" the message "DAT DOEN WE NIET VOOR NIETS" should be encrypted to "XAS DIMF WR TIXK WCJA MJVIR".
 
+## Haskell
+The file `enigmaxi.hs` contains an implementation of the full Enigmaxi machine in Haskell. You can test it by loading it in GHCi and running
+```
+  enigmaxi "IETS" "XAS DIMF WR TIXK WCJA MJVIR"
+```
+In `singleRotor.hs` we implement a greatly simplified version of the Enigmaxi with only one rotor. The rotor we use here is a reflector and different from the original Enigmaxi rotor. In this version the keyword is a single alphabetic character. Again, you can play with it in GHCi:
+```
+  singRot 'X' "PSB ASWR KV KSC RLUX RRFO DRAKQ"
+```
+
+## Clash
+
