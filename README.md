@@ -4,5 +4,5 @@ The Enigmaxi machine is an Enigma-inspired encryption machine appearing in probl
 I made this implementation to try out Haskell and functional programming. The Enigmaxi seemed a fun choice for such a project because of its recursive structure with an infinite set of rotors. I also tried out a bit of Clash by describing a circuit that functions as a single-rotor version of the Enigmaxi. For this single-rotor version I included a simple proof in Lean of the fact that the encryption algorithm is its own inverse.
 
 ## The Enigmaxi machine
-![The wheel of rotors](EnigmaxiWheel.png)
+![](EnigmaxiWheel.png)
 
