@@ -35,7 +35,7 @@ To set up a Clash project you can follow the instructions [here](https://clash-l
 ```
 stack run -- clashi
 ```
-After loading with `:l ClashSingRot.hs` we can simulate our circuit in the interpreter with `sampleN`. For example, to decrypt the message "PSBASWRKVKSCRLUXRRFODRAKQ" with key 'X' we can run
+After loading with `:l ClashSingRot.hs` we can simulate our circuit in the interpreter with `simulateN`. For example, to decrypt the message "PSBASWRKVKSCRLUXRRFODRAKQ" with key 'X' we can run
 ```
 simulateN @System 25 (topEntity 23 clockGen resetGen enableGen) [15,18,1,0,18,22,17,10,21,10,18,2,17,11,20,23,17,17,5,14,3,17,0,10,16]
 ```
